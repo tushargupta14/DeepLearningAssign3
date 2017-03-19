@@ -50,7 +50,7 @@ import numpy as np
 import os
 import train_dense
 import train_cnn
-
+from subprocess import call 
 
 def load_mnist():
     data_dir = '../data'
@@ -104,13 +104,18 @@ def main():
     print "\nDigit sample"
     print_digit(trainX[1], trainY[1])
     
-    train_dense.train(trainX,trainY)
+    
+    print 'Cloning from github'
+    git_repo = 'https://github.com/tushargupta14/weights.git'
+    call(['git','clone',git_repo])
+
+    #train_dense.train(trainX,trainY)
    
     labels = train_dense.test(testX)
     accuracy = np.mean((labels == testY)) * 100.0
     print "\nDNN Test accuracy: %lf%%" % accuracy
 
-    
+
     #train_cnn.train(trainX, trainY)
     labels = train_cnn.test(testX)
     accuracy = np.mean((labels == testY)) * 100.0
