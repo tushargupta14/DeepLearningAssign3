@@ -104,12 +104,13 @@ def main():
     print "\nDigit sample"
     print_digit(trainX[1], trainY[1])
     
-    #train_dense.train(trainX,trainY)
+    train_dense.train(trainX,trainY)
    
-    #labels = train_dense.test(testX)
-    #accuracy = np.mean((labels == testY)) * 100.0
-    #print "\nDNN Test accuracy: %lf%%" % accuracy
+    labels = train_dense.test(testX)
+    accuracy = np.mean((labels == testY)) * 100.0
+    print "\nDNN Test accuracy: %lf%%" % accuracy
 
+    
     #train_cnn.train(trainX, trainY)
     labels = train_cnn.test(testX)
     accuracy = np.mean((labels == testY)) * 100.0
